@@ -1,52 +1,121 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, View, SafeAreaView, StyleSheet, Platform, Text, TouchableOpacity, ScrollView } from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-
+import { Link, router } from 'expo-router'
+import { Entypo, Feather, Octicons } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
+import FeedCard from '@/components/FeedCard';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <SafeAreaView style={{
+      flex: 1,
+      backgroundColor: "white"
+    }}>
+      <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: 'white' }}>
+
+
+        {/* Header  */}
+        <StatusBar style='dark' />
+        <View style={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          paddingHorizontal: 10,
+          marginTop: 10,
+          paddingVertical: 20,
+        }}>
+          <View style={{
+            display: 'flex',
+            flexDirection: 'row'
+          }}>
+            <Image
+              source={{ uri:
+'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.thefamouspeople.com%2Fprofiles%2Fimages%2Felon-musk-8.jpg&f=1&nofb=1&ipt=a98a117d6c8374f554c1619ff1b615a57abdc5b45fcd1f72bf97152ea26916ee&ipo=images' }}
+              style={{
+                borderRadius: 500,
+                width: 60,
+                height: 60,
+              }}
+
+            />
+            <View style={{ marginLeft: 10 }}>
+              <Text style={{ fontFamily: 'poppinsbold', fontSize: 18 }}>What's Up Nithish?</Text>
+              <Text style={{ fontFamily: 'poppinsreg', fontSize: 14, color: 'gray' }}>Have a great day!</Text>
+            </View>
+          </View>
+          {/* Icons */}
+          <View style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: "space-evenly"
+          }}>
+            <TouchableOpacity
+              onPress={() => {
+                router.push("Onboard")
+              }}
+              style={{
+                borderRadius: 10,
+                backgroundColor: '#9bdb4d',
+                padding: 10,
+                marginHorizontal: 10,
+              }}>
+              <Octicons name="plus" size={22} color={"white"} />
+            </TouchableOpacity>
+            <TouchableOpacity style={{ marginHorizontal: 10 }}>
+              <Octicons name="bell-fill" size={22} color={"#9bdb4d"} />
+            </TouchableOpacity>
+          </View>
+
+        </View>
+
+
+        {/* Stories */}
+
+        <Text style={{ marginHorizontal: 10, fontFamily: 'poppinsreg', fontSize: 16 }}>Stories</Text>
+        <ScrollView horizontal
+          showsHorizontalScrollIndicator={false}
+
+          style={{
+            marginTop: 10,
+            maxHeight: 100,
+          }}>
+          {
+            [...new Array(7)].map((dat) => {
+              return <TouchableOpacity style={{
+                marginLeft: 20,
+                borderWidth: 2,
+                borderColor:'#9bdb4d',
+                borderRadius: 60
+              }}>
+                <Image
+                  style={{ width: 60, height: 60, borderRadius: 60 }}
+                />
+              </TouchableOpacity>
+            })
+          }
+        </ScrollView>
+
+        {/* Image Feeds  */}
+        <Text style={{ marginHorizontal: 10, marginTop: 20, marginBottom: 5, fontFamily: 'poppinsreg', fontSize: 16 }}>Image Feeds</Text>
+
+        <FeedCard />
+        <FeedCard />
+        <FeedCard />
+        <FeedCard />
+        <FeedCard />
+        <FeedCard />
+        <FeedCard />
+        <FeedCard />
+        <FeedCard />
+        <FeedCard />
+        <FeedCard />
+        <FeedCard />
+        <FeedCard />
+
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
