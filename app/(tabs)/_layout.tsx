@@ -1,13 +1,16 @@
 import { Tabs } from 'expo-router';
 import React from 'react'; 
+import {Platform} from 'react-native' 
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { Entypo, FontAwesome, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import {Dimensions} from 'react-native';
+
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-
+  const width =  Dimensions.get('window').width;
   return (
     <Tabs
 
@@ -18,18 +21,20 @@ export default function TabLayout() {
           display:'none'
         },
         tabBarStyle:{
-          // height:60, 
-          // position:'absolute',
-          // // bottom:20, 
-          // marginHorizontal:50, 
-          // shadowColor:'black',
-          // shadowOffset:{
-          //   width:0,
-          //   height:4,
-          // },
-          // shadowOpacity:.2,
-          // shadowRadius:4,
-          // borderRadius:10, 
+          height:60, 
+          position:'absolute',
+          bottom:20,  
+          maxWidth:300,
+          shadowColor:'black',
+            left:'50%',
+                 transform: [{translateX: Platform.OS == "web"?"-50%":-width/4}],
+          shadowOffset:{ 
+            width:0,
+            height:4,
+          },
+          shadowOpacity:.2,
+          shadowRadius:4,
+          borderRadius:10, 
         }
       }}>
       <Tabs.Screen
@@ -43,7 +48,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="liked"
+        name="favourites"
         options={{
           title: 'Favourites',
           tabBarIcon: ({ color, focused }) => (

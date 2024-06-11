@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, StyleSheet,ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Entypo, Feather, FontAwesome, Ionicons, Octicons } from '@expo/vector-icons'
@@ -6,15 +6,24 @@ import { Entypo, Feather, FontAwesome, Ionicons, Octicons } from '@expo/vector-i
 export default function profile() {
   return (
     <SafeAreaView style={{
-      backgroundColor:'white'
+      backgroundColor:'white',
+  flex:1,
+    }}>
+    
+    <ScrollView style={{
+    maxWidth:500, 
+    width:'100%', 
+         alignSelf:'center', 
+         flex:1
     }}>
       {/* Links */}
       <View
       style={{
         display:'flex',
-        flexDirection:"row",
+        flexDirection:"row", 
+        paddingVetical:10,
         justifyContent:'space-between',
-        paddingHorizontal:10,
+        paddingHorizontal:10, 
         alignItems:'center', 
       }}
       >
@@ -75,7 +84,23 @@ style={{
     <Text style={{fontFamily:'poppinsbold',fontSize:18,textAlign:'center'}}>10</Text>
   </View>
 </View>
-      
+
+{/* post by the user */}
+
+<View>
+  <TouchableOpacity>
+    <Text>pictures</Text>
+  </TouchableOpacity>
+
+  <TouchableOpacity>
+    <Text>videos</Text>
+  </TouchableOpacity>
+
+  <TouchableOpacity>
+    <Text>tagged</Text>
+  </TouchableOpacity>
+  </View>      
+  </ScrollView>
     </SafeAreaView>
   )
 }

@@ -1,19 +1,26 @@
-import { Image, View, SafeAreaView, StyleSheet, Platform, Text, TouchableOpacity, ScrollView } from 'react-native';
-
+import {   View, SafeAreaView, StyleSheet, Platform, Text, TouchableOpacity, ScrollView, useColorScheme, Button } from 'react-native';
+import {Image} from 'expo-image'
+import {Stories} from '@/helpers/DataHub.js'
 import { Link, router } from 'expo-router'
 import { Entypo, Feather, Octicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
-import FeedCard from '@/components/FeedCard';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import FeedCard from '@/components/FeedCard';  
+import { Colors } from '@/constants/Colors';
+import { useThemeColor } from '@/hooks/useThemeColor';
 export default function HomeScreen() {
+
+  const colorScheme = useColorScheme();
+
   return (
     <SafeAreaView style={{
       flex: 1,
       backgroundColor: "white"
     }}>
-      <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: 'white' }}>
-
-
+      <ScrollView showsVerticalScrollIndicator={false} 
+      style={{ backgroundColor:  Colors[colorScheme ?? 'light'].background,
+      // maxWidth:800,
+      alignSelf:'center'
+      }}> 
         {/* Header  */}
         <StatusBar style='dark' />
         <View style={{
@@ -22,7 +29,7 @@ export default function HomeScreen() {
           alignItems: 'center',
           justifyContent: 'space-between',
           paddingHorizontal: 10,
-          marginTop: 10,
+          marginTop: 20,
           paddingVertical: 20,
         }}>
           <View style={{
@@ -30,10 +37,10 @@ export default function HomeScreen() {
             flexDirection: 'row'
           }}>
             <Image
-              source={{ uri:
-'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.thefamouspeople.com%2Fprofiles%2Fimages%2Felon-musk-8.jpg&f=1&nofb=1&ipt=a98a117d6c8374f554c1619ff1b615a57abdc5b45fcd1f72bf97152ea26916ee&ipo=images' }}
+              source={ 
+'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.thefamouspeople.com%2Fprofiles%2Fimages%2Felon-musk-8.jpg&f=1&nofb=1&ipt=a98a117d6c8374f554c1619ff1b615a57abdc5b45fcd1f72bf97152ea26916ee&ipo=images' }
               style={{
-                borderRadius: 500,
+                borderRadius: 30,
                 width: 60,
                 height: 60,
               }}
@@ -82,7 +89,7 @@ export default function HomeScreen() {
             maxHeight: 100,
           }}>
           {
-            [...new Array(7)].map((dat) => {
+            Stories.map((img) => {
               return <TouchableOpacity style={{
                 marginLeft: 20,
                 borderWidth: 2,
@@ -90,13 +97,14 @@ export default function HomeScreen() {
                 borderRadius: 60
               }}>
                 <Image
-                  style={{ width: 60, height: 60, borderRadius: 60 }}
+                source={img}
+                  style={{ width: 60, height: 60, borderRadius: 30 }}
                 />
               </TouchableOpacity>
             })
           }
         </ScrollView>
-
+ 
         {/* Image Feeds  */}
         <Text style={{ marginHorizontal: 10, marginTop: 20, marginBottom: 5, fontFamily: 'poppinsreg', fontSize: 16 }}>Image Feeds</Text>
 

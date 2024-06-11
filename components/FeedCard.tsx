@@ -1,4 +1,5 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text,   TouchableOpacity } from 'react-native'
+import {Image} from 'expo-image'
 import React from 'react'
 import { AntDesign, Entypo, Feather, FontAwesome, Ionicons } from '@expo/vector-icons'
 
@@ -33,11 +34,11 @@ const FeedCard = () => {
                 height: '80%',
             }}>
                 <Image
-                    source={{ uri: "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fjontotheworld.com%2Fwp-content%2Fuploads%2F2015%2F03%2Flarsian-cebu.jpg&f=1&nofb=1&ipt=2c89e72ea96c6ccf0bb8ebe4a26814f1e1a4e5ee50418fc97ff7a2df5a30df78&ipo=images" }}
+                    source={ "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fjontotheworld.com%2Fwp-content%2Fuploads%2F2015%2F03%2Flarsian-cebu.jpg&f=1&nofb=1&ipt=2c89e72ea96c6ccf0bb8ebe4a26814f1e1a4e5ee50418fc97ff7a2df5a30df78&ipo=images" }
                     style={{
                         width: "100%",
                         height: '90%',
-                        borderRadius: 10
+                        borderRadius: 5
                     }}
                     resizeMode='cover'
                 />
@@ -57,11 +58,11 @@ const FeedCard = () => {
                     alignItems: 'center'
                 }}>
                     <Image
-                        source={{ uri: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fc.files.bbci.co.uk%2FD26F%2Fproduction%2F_127817835_musk_sq_1.png&f=1&nofb=1&ipt=1684484ec321bb1c2a6ee4927cd39e6d8173770308a465300e792d82b7283897&ipo=images' }}
+                        source={  'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fc.files.bbci.co.uk%2FD26F%2Fproduction%2F_127817835_musk_sq_1.png&f=1&nofb=1&ipt=1684484ec321bb1c2a6ee4927cd39e6d8173770308a465300e792d82b7283897&ipo=images' }
                         style={{
                             width: 50,
                             height: 50,
-                            borderRadius: 50,
+                            borderRadius: 25,
 
                         }}
                     />

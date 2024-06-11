@@ -6,7 +6,8 @@ import { View, SafeAreaView, Image, Text, TouchableOpacity, StyleSheet } from "r
 const Onboarding = () => {
     return (
         <SafeAreaView style={{
-            flex: 1, padding: 10, flexDirection: 'column', display: 'flex',
+            flex: 1, padding: 10,
+            flexDirection: 'column', display: 'flex',
             backgroundColor: '#9bdb4d', justifyContent: "center", alignItems: "center"
         }}>
             <Image
@@ -17,7 +18,9 @@ const Onboarding = () => {
                 }}
                 resizeMode="contain"
             />
-            <Text style={{ fontFamily: "poppinsbold", fontSize: 24, textAlign: 'center', marginVertical: 20 }}>{`Lets Be Friends With\nbefriend`}</Text>
+            <Text style={{ fontFamily: "poppinsbold", fontSize: 24, textAlign: 'center',
+             marginVertical: 20 }}>{`Lets Be Friends With\nbefriend`}</Text>
+            <View style={{width:'100%',maxWidth:500,alignSelf:'center',justifySelf:'center'}}>
             <TouchableOpacity
                 onPress={() => {
                     router.push("(tabs)")
@@ -27,7 +30,7 @@ const Onboarding = () => {
                     backgroundColor: "white",
                     borderRadius: 50,
                     width: '100%',
-                    marginHorizontal: 10,
+                    //marginHorizontal: 10,
                 }}
             >
                 <Text style={{ textAlign: 'center', fontFamily: 'poppinsreg', fontSize: 14 }}>Login</Text>
@@ -39,7 +42,7 @@ const Onboarding = () => {
                     borderRadius: 50,
                     width: '100%',
                     marginVertical: 10,
-                    marginHorizontal: 10,
+                    //marginHorizontal: 10,
                 }}
             >
                 <Text style={{
@@ -47,6 +50,7 @@ const Onboarding = () => {
                     fontFamily: 'poppinsreg', color: "white", fontSize: 14
                 }}>Sign up</Text>
             </TouchableOpacity>
+            </View>
         </SafeAreaView>
     )
 }
